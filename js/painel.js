@@ -76,11 +76,16 @@
       return;
     }
 
+    // Enquanto houver turno em oração, o(s) próximo(s) turno(s) mostram
+    // sempre a contagem regressiva até o início, mesmo se faltar muito tempo.
+    const proximoInicio = ativos.length && proximos.length
+      ? new Date(proximos[0].horario_inicial).getTime() : null;
+
     const next = new Set();
     el("rows").innerHTML = visiveis.map((t) => {
       const ini = new Date(t.horario_inicial), fim = new Date(t.horario_final);
       const live = ini <= now;
-      const soon = !live && ini - now <= SOON_MS;
+      const soon = !live && (ini - now <= SOON_MS || ini.getTime() === proximoInicio);
       const key = t.id + ":" + page;
       next.add(key);
       const cls = ["row", live ? "live" : soon ? "soon" : "", shown.has(key) ? "" : "enter"].join(" ");
@@ -90,7 +95,7 @@
       const status = live ? "Em oração"
         : !soon ? "Agendado"
         : falta <= 60000 ? "Menos de 1 minuto"
-        : `Em ${Math.ceil(falta / 60000)} min`;
+        : "Em " + fmtFalta(falta);
       return `
         <div class="${cls}">
           <div class="time">${dayTag(ini, now)}${fmtHora(ini)}</div>
@@ -104,6 +109,14 @@
         </div>`;
     }).join("");
     shown = next;
+  }
+
+  // 25 min · 1h · 1h 05min
+  function fmtFalta(ms) {
+    const min = Math.ceil(ms / 60000);
+    if (min < 60) return `${min} min`;
+    const h = Math.floor(min / 60), m = min % 60;
+    return m ? `${h}h ${String(m).padStart(2, "0")}min` : `${h}h`;
   }
 
   // Mostra a data acima do horário quando não é hoje
