@@ -64,7 +64,7 @@ body.hide-cursor, body.hide-cursor * { cursor: none !important; }
 /* Grade de colunas compartilhada */
 .cols, .row {
   display: grid;
-  grid-template-columns: 7fr 7fr 23fr 14fr 23fr 14fr 12fr;
+  grid-template-columns: 7fr 7fr 20fr 15fr 20fr 15fr 16fr;
   column-gap: calc(var(--u) * 1);
   padding: 0 calc(var(--u) * 1.2);
   align-items: center;
@@ -101,7 +101,7 @@ body.hide-cursor, body.hide-cursor * { cursor: none !important; }
   display: block; font-size: .5em; color: var(--muted); letter-spacing: .1em; line-height: 1;
 }
 .row .campo { color: #aeb8cc; font-weight: 500; }
-.row .status { font-size: .78em; font-weight: 700; letter-spacing: .08em; color: var(--muted); }
+.row .status { font-size: .78em; font-weight: 700; letter-spacing: .05em; color: var(--muted); }
 
 .row.soon .status { color: var(--soon); }
 .row.soon { border-left-color: var(--soon); }

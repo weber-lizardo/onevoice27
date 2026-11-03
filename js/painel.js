@@ -86,7 +86,11 @@
       const cls = ["row", live ? "live" : soon ? "soon" : "", shown.has(key) ? "" : "enter"].join(" ");
       const p1 = t.participante1 || {}, p2 = t.participante2 || {};
       const pct = live ? Math.min(100, ((now - ini) / (fim - ini)) * 100) : 0;
-      const status = live ? "Em oração" : soon ? `Em ${Math.max(1, Math.ceil((ini - now) / 60000))} min` : "Agendado";
+      const falta = ini - now;
+      const status = live ? "Em oração"
+        : !soon ? "Agendado"
+        : falta <= 60000 ? "Menos de 1 minuto"
+        : `Em ${Math.ceil(falta / 60000)} min`;
       return `
         <div class="${cls}">
           <div class="time">${dayTag(ini, now)}${fmtHora(ini)}</div>
