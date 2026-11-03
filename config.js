@@ -3,8 +3,8 @@
 // A chave "anon" é pública por natureza; a segurança é feita pelas
 // políticas RLS definidas em supabase/schema.sql.
 window.ONEVOICE_CONFIG = {
-  SUPABASE_URL: "https://SEU-PROJETO.supabase.co",
-  SUPABASE_ANON_KEY: "SUA-CHAVE-ANON",
+  SUPABASE_URL: "https://dwjseiqsqjcafkflowkd.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_Y4h7hTCWM1zg7v1SFcdwKg_2aVTEZlH",
 
   // Painel (TV)
   REFRESH_MS: 5000,          // intervalo de atualização dos dados

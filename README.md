@@ -26,7 +26,7 @@ Os ajustes (intervalos, linhas por página, minutos para "Em breve") ficam em `c
 
 1. **Crie as tabelas**: no Supabase, abra *SQL Editor* e execute `supabase/schema.sql`.
    Ele cria `onevoice27_participantes` e `onevoice27_turno_oracao`, os relacionamentos e as regras de segurança.
-2. **Configure as chaves**: em *Project Settings › API*, copie a *Project URL* e a chave *anon public* para `config.js`.
+2. **Configure as chaves**: em *Project Settings › API*, copie a *Project URL* e a chave *publishable* (ou *anon public*) para `config.js` (já configurado para o projeto `dwjseiqsqjcafkflowkd`).
 3. **Crie o usuário de cadastro**: em *Authentication › Users › Add user*, crie um usuário com e-mail e senha.
    As telas de cadastro pedem esse login; o painel da TV não precisa de login (somente leitura).
 4. **Publique** a pasta em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel, Cloudflare Pages)
